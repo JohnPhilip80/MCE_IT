@@ -1,46 +1,61 @@
 package edu.mce.john.ims;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import edu.mce.john.ims.model.DigitalProduct;
+import edu.mce.john.ims.model.Mobile;
 import edu.mce.john.ims.model.PhysicalProduct;
 import edu.mce.john.ims.model.Product;
+import edu.mce.john.ims.service.InventoryManager;
 import edu.mce.john.ims.service.Order;
 
 public class Demo {
 
 	public static void main(String[] args) {
-		System.out.println("Welcome to Inventory Management System");
 		
-		List<Product> productList = new ArrayList<Product>();
-		/*
-		productList.add(new PhysicalProduct("P-101-2026","Lenova Laptop",39800.00,2.0));
-		productList.add(new PhysicalProduct("P-102-2026","Samsung Phone",63700.00,0.7));
-		productList.add(new PhysicalProduct("P-103-2026","Office Rolling Chair",20600.00,20.0));
-		productList.add(new PhysicalProduct("P-104-2026","Office Desk",30300.00,35.0));
-		productList.add(new DigitalProduct("D-105-2026","EBook Java Learning",3600.00));
-		productList.add(new DigitalProduct("D-106-2026","Advanced Java Learning Video",7300.00));
+		System.out.println("Welcome to My Mobile Store");
 		
-		Order myOrder = new Order("ORD-2026-001",
-				"John Philip",
-				productList);
-		myOrder.generateInvoice();
-		*/
-
+		List<Mobile> mobileList = new ArrayList<Mobile>();
+		mobileList.add(new Mobile("M1001","Motorola","Edge 3",2020,26900.00));
+		mobileList.add(new Mobile("M1002","Samsung","S23",2024,69500.00));
+		mobileList.add(new Mobile("M1003","Apple","IPhone 16 Max",2025,115000.00));
+		mobileList.add(new Mobile("M1004","Redmi","Note 4",2019,18600.00));
+		mobileList.add(new Mobile("M1005","Poco","Grand 2",2021,21500.00));
+		mobileList.add(new Mobile("M1006","Apple","IPhone 14",2022,91700.00));
+		mobileList.add(new Mobile("M1007","Samsung","S25 Ultra",2026,96300.00));
 		
-		//List, Set, Map and Iteration
-		InventoryManager inventory = new InventoryManager();
-		inventory.addProduct(new PhysicalProduct("P101","Lenova Laptop",32000.00, 3.0),"Electronics",100);
-		inventory.addProduct(new PhysicalProduct("P102","Samsung S25 Mobile",74000.00,0.7),"Electronics", 150);
-		inventory.addProduct(new PhysicalProduct("P103","Office Rolling Chair",14000.00,25.0),"Furnitures", 25);
-		inventory.addProduct(new PhysicalProduct("P104","Office Computer Desk",25000.00,50.0),"Furnitures", 15);
-		inventory.addProduct(new DigitalProduct("D101","EBook Learn Java",4500.00),"Education", 40);
-		inventory.addProduct(new DigitalProduct("D102","Video Course Advanced Java",8500.00),"Education",30);
-		inventory.addProduct(new DigitalProduct("D103","Magazine AI 2026",3100.00),"Education", 20);
+		Collections.sort(mobileList);
 		
-		inventory.displayCategories();
-		inventory.displayInventory();
+		System.out.printf("%-10s%-15s%-20s%-15s%-15s\n","Id","Brand","Model","Year Launched","Price");
+		for(Mobile mob:mobileList)
+			System.out.println(mob);
 		
+		//sortNumbers();
+	}
+	public static void sortNumbers() {
+		int[] numbers = {7,2,4,1,9};
+		
+		System.out.println("Numbers Before Sort:");
+		for(int n:numbers)
+			System.out.print(n + " - ");
+		int temp;
+		for(int i=0;i<5;i++) {
+			for(int j=i+1;j<5;j++) {
+				if(numbers[j]<numbers[i]) {
+					temp = numbers[i];
+					numbers[i] = numbers[j];
+					numbers[j] = temp;
+				}
+			}
+		}
+		System.out.println("\nNumbers After Sort:");
+		for(int n:numbers)
+			System.out.print(n + " - ");
 	}
 }
+
+
+
+		
